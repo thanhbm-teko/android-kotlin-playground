@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="org.playground.android.ui.main.MainViewModel" />
+            type="org.playground.android.ui.main.ThirdViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -32,36 +32,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.welcomeText}"
-                tools:text="Welcome"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.welcomeText}"
+            tools:text="Welcome"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button1_title"
-                android:onClick="@{() -> viewModel.onButton1Clicked()}"
-                />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button1_title"
+            android:onClick="@{() -> viewModel.onButton1Clicked()}"
+            />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button2_title"
-                android:onClick="@{() -> viewModel.onButton2Clicked()}"
-                />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button2_title"
+            android:onClick="@{() -> viewModel.onButton2Clicked()}"
+            />
 
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.next()}"
-            android:text="@string/next"
+            android:onClick="@{() -> viewModel.back()}"
+            android:text="@string/back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

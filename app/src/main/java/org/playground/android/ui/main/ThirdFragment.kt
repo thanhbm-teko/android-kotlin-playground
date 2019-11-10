@@ -11,17 +11,18 @@ import androidx.navigation.fragment.findNavController
 import org.playground.android.BR
 import org.playground.android.R
 import org.playground.android.databinding.MainFragmentBinding
+import org.playground.android.databinding.ThirdFragmentBinding
 
-class MainFragment : Fragment(), NavigationView {
+class ThirdFragment : Fragment(), NavigationView {
 
-    private lateinit var viewModel: MainViewModel
-    private lateinit var viewDataBinding: MainFragmentBinding
+    private lateinit var viewModel: ThirdViewModel
+    private lateinit var viewDataBinding: ThirdFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
+        viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.third_fragment, container, false)
         return viewDataBinding.root
     }
 
@@ -34,7 +35,7 @@ class MainFragment : Fragment(), NavigationView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ThirdViewModel::class.java)
         viewModel.setView(this)
         viewDataBinding.setVariable(BR.viewModel, viewModel)
         viewDataBinding.lifecycleOwner = viewLifecycleOwner
@@ -42,11 +43,11 @@ class MainFragment : Fragment(), NavigationView {
     }
 
     override fun onNext() {
-        findNavController().navigate(R.id.action_mainFragment_to_secondFragment)
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onBack() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        findNavController().navigateUp()
     }
 
 }

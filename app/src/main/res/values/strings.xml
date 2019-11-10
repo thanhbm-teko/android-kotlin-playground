@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">android-playground</string>
+    <string name="button1_title">Button 1</string>
+    <string name="button2_title">Button 2</string>
+    <string name="button3_title">Button 3</string>
+    <string name="button4_title">Button 4</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
 </resources>

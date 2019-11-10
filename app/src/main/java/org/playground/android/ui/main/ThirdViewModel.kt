@@ -7,8 +7,8 @@ import org.playground.android.data.DataManager
 import org.playground.android.ui.base.BaseViewModel
 import timber.log.Timber
 
-class MainViewModel : BaseViewModel<NavigationView>() {
-    var title = MutableLiveData<String>("Fragment 1")
+class ThirdViewModel : BaseViewModel<NavigationView>() {
+    var title = MutableLiveData<String>("Fragment 3")
     val welcomeText = MutableLiveData<String>("Welcome")
 
     fun onButton1Clicked() {
@@ -28,5 +28,9 @@ class MainViewModel : BaseViewModel<NavigationView>() {
 
     fun next() {
         getView()?.onNext()
+    }
+
+    fun back() {
+        getView()?.onBack()
     }
 }
