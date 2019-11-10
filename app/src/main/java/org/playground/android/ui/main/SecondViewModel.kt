@@ -10,6 +10,9 @@ class SecondViewModel : BaseViewModel<NavigationView>() {
     var title = MutableLiveData<String>("Fragment 2")
     val welcomeText = MutableLiveData<String>("Welcome")
     var welcomeText2: LiveData<String> = MutableLiveData<String>("Welcome 2")
+
+    // this case, getStringDelayed is still run when we navigate away from the fragment,
+    // but the map function is not triggered after getStringDelayed emit result
     var welcomeTextDelay = Transformations.map(DataManager.getStringDelayed(5000)) {
         Timber.d("got data")
         it
@@ -19,7 +22,7 @@ class SecondViewModel : BaseViewModel<NavigationView>() {
         welcomeText.value = "Button 1 clicked"
     }
 
-    // even when the fragment is destroyed, the callback still trigger
+    // even when we navigate away from the fragment, the callback still trigger
     fun onButton2Clicked() {
         viewModelScope.launch {
             val titleLd = DataManager.getStringDelayed(10000)
@@ -43,6 +46,7 @@ class SecondViewModel : BaseViewModel<NavigationView>() {
     }
 
     // use BaseViewModel.performTask to properly manage LiveData and Observer
+    // the observer is removed after fragment is destroyed but not when we navigate to next fragment
     fun onButton4Clicked() {
         viewModelScope.launch {
             performTask(DataManager.getStringDelayed(10000)) {
@@ -53,6 +57,8 @@ class SecondViewModel : BaseViewModel<NavigationView>() {
         }
     }
 
+    // this LiveData is observe from fragment with lifeCycleOwner and is properly managed
+    // when we navigate away from this fragment
     fun getStringDelayedLiveData() = DataManager.getStringDelayed(7000)
 
     fun next() {
